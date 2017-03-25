@@ -69,6 +69,25 @@ Any other deployment method can be used as well with one requirement:
 
 `composer install` must be run as part of the deploy process.
 
+## Docker
+
+[Docker4WordPress](http://docs.docker4wordpress.org/en/latest/) is a set of docker containers optimized for running WordPress. Nginx, PHP 7.0/1, MariaDB, Redis, Varnish, phpMyAdmin, Mailhog.
+
+### Instructions
+* Boot docker `sudo docker-compose up -d`
+* Symlink is required `ln -s web/ html`
+* [Site URL](http://wp.docker.localhost:8000)
+* [traefik.io Dashboard URL](http://localhost:8080/dashboard/#/)
+* [PHPmyAdmin URL](http://pma.wp.docker.localhost:8000)
+* [Mailhog URL](http://mailhog.wp.docker.localhost:8000)
+
+### .env settings
+* `DB_NAME=wordpress`
+* `DB_USER=wordpress`
+* `DB_PASSWORD=wordpress`
+* `DB_HOST=Obtain IP address from traefik.io Dashboard under 'backend-bedrock-mariadb-1'`
+* `WP_HOME=http://wp.docker.localhost:8000`
+
 ## Documentation
 
 Bedrock documentation is available at [https://roots.io/bedrock/docs/](https://roots.io/bedrock/docs/).
